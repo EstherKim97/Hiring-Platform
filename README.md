@@ -27,5 +27,26 @@ Repository layout
 
 License
 
-Please add a LICENSE file or tell me which license to apply.
+This project is licensed under the MIT License (see LICENSE).
+
+Reproducibility: Docker and Binder
+
+- Quick local demo (lightweight, no heavy deps):
+
+  python3 src/quick_demo.py
+
+- Full pipeline (requires optional heavy deps):
+
+  pip install -r requirements-optional.txt
+  ./run_full.sh
+
+- Run in Docker (reproducible container with optional heavy deps installed):
+
+  docker build -t ab-matchscore:latest .
+  docker run --rm -it ab-matchscore:latest /bin/bash
+  # inside container: ./run_full.sh
+
+- Binder: a Binder environment is provided; click the badge to launch a temporary cloud instance with the full environment (build may take several minutes since optional deps are installed).
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/EstherKim97/Hiring-Platform/estherkim97-supreme-train)
 
