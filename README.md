@@ -17,7 +17,7 @@ of just my own anecdotal feeling. The answer surprised me — it makes
 hiring outcomes *worse*, not better. Here's the experiment, and how a
 naive read of the results would have gotten the conclusion backwards.
 
-![Naive vs real effect](output/charts_real/02_naive_vs_real_effect.png)
+![Naive vs real effect](02_naive_vs_real_effect.png)
 
 ## The short version
 
@@ -40,7 +40,7 @@ harder than others: candidates with less traditional backgrounds were
 discouraged from applying even more than everyone else, so on top of the
 overall harm, it's arguably making the process less fair too.
 
-**Full write-up:** [`output/REPORT.md`](output/REPORT.md)
+**Full write-up:** [`REPORT.md`](REPORT.md)
 
 ## Why I built it this way
 
@@ -79,7 +79,7 @@ piece, and I tried to be upfront about exactly how (it's all documented in
 ```
 src/                  pipeline code (run in order: load_data -> match_score
                        -> run_experiment -> analyze -> charts)
-output/REPORT.md       full write-up with methodology and results
+REPORT.md       full write-up with methodology and results
 output/charts_real/    charts generated from the real experiment run
 data/                  (not included — see data/README.md for where to
                         get the real datasets and how to set them up)
