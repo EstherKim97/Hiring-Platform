@@ -43,7 +43,7 @@ Candidates from less traditional backgrounds were discouraged from
 applying more than everyone else — so on top of hurting outcomes overall,
 it was arguably making the process less fair too.
 
-![Application volume collapsed](../output/charts_real/01_application_volume.png)
+![Application volume collapsed](docs/figures/01_application_volume.png)
 
 ## The business question
 
@@ -89,7 +89,7 @@ p = 0.37, not significant. The entire apparent lift turns out to be
 explained by people self-selecting into better-matched jobs, not by any
 real improvement in the hiring process.
 
-![Naive vs real effect](../output/charts_real/02_naive_vs_real_effect.png)
+![Naive vs real effect](docs/figures/02_naive_vs_real_effect.png)
 
 ## The real result
 
@@ -122,7 +122,7 @@ individual effect below -5 points on their chance of applying — this
 treatment hurts almost everyone's odds of applying, and non-traditional
 candidates get hit hardest.
 
-![Equity gap](../output/charts_real/03_equity_gap.png)
+![Equity gap](docs/figures/03_equity_gap.png)
 
 ## What I'd recommend
 
