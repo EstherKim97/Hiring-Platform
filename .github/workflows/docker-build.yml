@@ -1,0 +1,25 @@
+name: Docker build (CI validation)
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build-image:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Build Docker image (load into runner)
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: false
+          load: true
+          tags: ab-matchscore:ci
+      - name: Run quick demo inside built image
+        run: |
+          docker run --rm ab-matchscore:ci python3 src/quick_demo.py
