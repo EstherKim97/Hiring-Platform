@@ -1,5 +1,7 @@
 # AB Test: Effect of Showing Candidates Their Match Score
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) [![CI](https://github.com/EstherKim97/Hiring-Platform/actions/workflows/ci.yml/badge.svg)](https://github.com/EstherKim97/Hiring-Platform/actions/workflows/ci.yml)
+
 This repository evaluates whether showing candidates an AI-generated "match score" affects application behavior and hiring outcomes. The analysis includes simulated user behavior, randomized assignment, CUPED variance reduction, always-valid sequential testing, and causal-forest HTE analysis.
 
 Quick start
