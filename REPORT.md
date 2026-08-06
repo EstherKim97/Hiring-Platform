@@ -108,6 +108,15 @@ made them apply less, and that cost more than it gained.
 
 ## Guardrails
 
+## Assumptions & Limitations
+
+- CUPED relies on having a valid pre-treatment covariate that is predictive of the outcome and is not affected by treatment. Using match_score as the CUPED covariate is defensible here but should be discussed when applying to a new dataset.
+- The causal-forest HTE estimates assume unconfoundedness conditional on the supplied covariates; interpreting individual-level CATEs as causal requires these covariates to capture all important confounders.
+- The simulated user behavior (how candidates react when shown a score) is modelled and not observed; results should be viewed as sensitivity analyses rather than exact forecasts.
+- Heavy-model results (econml causal forests) are not run in CI by default; reproduce full HTE locally by installing requirements-optional.txt.
+
+
+
 Application volume dropped 70.6% (from 32.5% of shown job pairs down to
 9.5%). Even on its own, a drop that large should stop a rollout — before
 you even get to whether the primary metric moved.

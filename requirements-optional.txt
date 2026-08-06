@@ -1,0 +1,6 @@
+# Optional heavy dependencies for full causal analysis
+# Install these only when running full HTE models locally.
+
+econml
+xgboost
+shap
