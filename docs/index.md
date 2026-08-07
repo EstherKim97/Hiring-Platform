@@ -12,7 +12,7 @@ If you only look at the people who actually applied, though, it looks like the o
 
 What's actually going on: seeing a mediocre score scares people off. Applications dropped 70% in the group that saw their score, and that drop costs more, in terms of actual offers landed, than any quality benefit from the people who stuck around and applied anyway. It also wasn't even. Candidates from less traditional backgrounds were discouraged from applying as much as everyone else, so, on top of hurting overall outcomes, it was arguably making the process less fair, too.
 
-![Application volume collapsed](docs/figures/01_application_volume.png)
+![Application volume collapsed](figures/01_application_volume.png)
 
 ## The business question
 
@@ -35,7 +35,7 @@ p < 0.0001 — on its face, this looks like a clear win
 
 But this comparison is comparing two different populations, not measuring the treatment's actual effect. Who applies changes because of the treatment itself, so you can't just compare outcomes among the people who happened to apply in each group. I used CUPED — using match_score itself as a pre-treatment covariate — to correct for this, and the result flips: p = 0.37, not significant. The entire apparent lift is explained by people self-selecting into better-matched jobs, not by any real improvement in the hiring process.
 
-![Naive vs real effect](docs/figures/02_naive_vs_real_effect.png)
+![Naive vs real effect](figures/02_naive_vs_real_effect.png)
 
 ## The real result
 
@@ -60,7 +60,7 @@ Application volume dropped 70.6% (from 32.5% of shown job pairs down to 9.5%). E
 
 The effect also wasn't even across candidates. People with less traditional educational backgrounds were discouraged more than others (-78.7% application rate vs. -60.9%). I also ran a causal forest (a method from Wager & Athey that estimates each candidate's treatment effect using all their covariates simultaneously, rather than testing one segment at a time). It found that 94% of candidates have an estimated individual effect of less than -5 points on their likelihood of applying. This treatment hurts almost everyone's odds of applying, and non-traditional candidates get hit hardest.
 
-![Equity gap](docs/figures/03_equity_gap.png)
+![Equity gap](figures/03_equity_gap.png)
 
 ## What I'd recommend
 
