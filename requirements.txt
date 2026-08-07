@@ -1,5 +1,6 @@
 pandas==2.2.2
 numpy==1.26.4
+# scipy pinned but may require Python 3.10-3.13; see notes if install fails
 scipy==1.11.3
 scikit-learn==1.3.3
 statsmodels==0.14.0
