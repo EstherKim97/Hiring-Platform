@@ -49,7 +49,7 @@ around. It also lands unevenly: candidates with less traditional
 backgrounds were discouraged from applying even more than everyone else, so
 on top of the overall harm, it's arguably making the process less fair too.
 
-**Full write-up:** [`REPORT.md`](REPORT.md)
+**Full write-up:** [estherkim97.github.io/Hiring-Platform](https://estherkim97.github.io/Hiring-Platform/) (or [`REPORT.md`](REPORT.md) if you're browsing the repo directly)
 
 ## Why I built it this way
 
