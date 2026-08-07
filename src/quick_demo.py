@@ -46,7 +46,6 @@ def run_demo():
                     "candidate_id": c.candidate_id,
                     "job_id": j.job_id,
                     "match_score": max(0.0, min(1.0, np.random.normal(0.5, 0.15))),
-                    "background": c.background,
                 })
         match_df = pd.DataFrame(pairs)
 
