@@ -28,7 +28,7 @@ outcomes *worse*, not better, and it hits non-traditional candidates hardest
 of all. This repo is that experiment, and a walkthrough of how a naive read
 of the results would have gotten the conclusion backwards.
 
-![Naive vs real effect](02_naive_vs_real_effect.png)
+![Naive vs real effect](docs/figures/02_naive_vs_real_effect.png)
 
 ## The short version
 
