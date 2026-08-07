@@ -50,11 +50,21 @@ def run_demo():
                 })
         match_df = pd.DataFrame(pairs)
 
+    # Ensure 'background' is present on the pair-level dataframe; some
+    # compute_match_scores implementations may omit it, so merge candidate
+    # metadata explicitly to avoid KeyError in simulate_apply_decision.
+    if "background" not in match_df.columns:
+        match_df = match_df.merge(candidates[["candidate_id", "background"]], on="candidate_id", how="left")
+
     print("Simulating assignment and behavior (lightweight)")
     # simple 50/50 assignment and simulate behavior
     assignment = pd.Series(np.random.choice(["control", "treatment"], size=len(candidates)), index=candidates["candidate_id"])  # noqa: E501
-    applied_df = simulate_apply_decision(match_df, candidates, assignment)
-    funnel_df = simulate_hire_funnel(applied_df)
+    try:
+        applied_df = simulate_apply_decision(match_df, candidates, assignment)
+        funnel_df = simulate_hire_funnel(applied_df)
+    except KeyError as e:
+        print(f"Quick demo failed due to missing column: {e}. Dumping match_df columns:\n", match_df.columns)
+        raise
 
     result = applied_df.merge(
         funnel_df[["candidate_id", "job_id", "interviewed", "offer"]],
