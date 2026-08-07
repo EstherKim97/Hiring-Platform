@@ -17,7 +17,6 @@ specifically) that a single-variable segment table would miss entirely.
 
 import numpy as np
 import pandas as pd
-from econml.dml import CausalForestDML
 from sklearn.ensemble import RandomForestRegressor, RandomForestClassifier
 
 
@@ -31,11 +30,25 @@ def estimate_cate(df: pd.DataFrame, outcome_col: str, treatment_col: str,
                      (numeric; encode categoricals beforehand)
 
     Returns df with an added 'cate' column: each row's estimated
-    individual treatment effect.
+    individual treatment effect. If econml is not installed, returns a
+    fallback where every unit's CATE is set to the overall ATE (fast and
+    dependency-free), and model is None.
     """
     X = df[covariate_cols].values
     Y = df[outcome_col].values.astype(float)
     T = df[treatment_col].values.astype(float)
+
+    # econml is an optional heavy dependency. Try to import and run CausalForestDML;
+    # if it's unavailable, fall back to a simple ATE-per-unit placeholder so the
+    # function remains importable and usable in lightweight CI.
+    try:
+        from econml.dml import CausalForestDML
+    except Exception:
+        # Fallback: estimate overall ATE and assign to every row as 'cate'.
+        ate = Y[T == 1].mean() - Y[T == 0].mean()
+        out_df = df.copy()
+        out_df["cate"] = np.full(len(out_df), ate)
+        return out_df, None
 
     model = CausalForestDML(
         model_y=RandomForestRegressor(n_estimators=200, min_samples_leaf=20, random_state=42),

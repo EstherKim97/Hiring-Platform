@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 
 from load_data import DATA_DIR
 
-OUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "output", "charts")
+OUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "docs", "figures")
 os.makedirs(OUT_DIR, exist_ok=True)
 
 COLOR_CONTROL = "#6B7280"

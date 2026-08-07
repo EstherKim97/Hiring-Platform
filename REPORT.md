@@ -43,7 +43,7 @@ Candidates from less traditional backgrounds were discouraged from
 applying more than everyone else — so on top of hurting outcomes overall,
 it was arguably making the process less fair too.
 
-![Application volume collapsed](01_application_volume.png)
+![Application volume collapsed](docs/figures/01_application_volume.png)
 
 ## The business question
 
@@ -89,7 +89,7 @@ p = 0.37, not significant. The entire apparent lift turns out to be
 explained by people self-selecting into better-matched jobs, not by any
 real improvement in the hiring process.
 
-![Naive vs real effect](02_naive_vs_real_effect.png)
+![Naive vs real effect](docs/figures/02_naive_vs_real_effect.png)
 
 ## The real result
 
@@ -108,6 +108,15 @@ made them apply less, and that cost more than it gained.
 
 ## Guardrails
 
+## Assumptions & Limitations
+
+- CUPED relies on having a valid pre-treatment covariate that is predictive of the outcome and is not affected by treatment. Using match_score as the CUPED covariate is defensible here but should be discussed when applying to a new dataset.
+- The causal-forest HTE estimates assume unconfoundedness conditional on the supplied covariates; interpreting individual-level CATEs as causal requires these covariates to capture all important confounders.
+- The simulated user behavior (how candidates react when shown a score) is modelled and not observed; results should be viewed as sensitivity analyses rather than exact forecasts.
+- Heavy-model results (econml causal forests) are not run in CI by default; reproduce full HTE locally by installing requirements-optional.txt.
+
+
+
 Application volume dropped 70.6% (from 32.5% of shown job pairs down to
 9.5%). Even on its own, a drop that large should stop a rollout — before
 you even get to whether the primary metric moved.
@@ -122,7 +131,7 @@ individual effect below -5 points on their chance of applying — this
 treatment hurts almost everyone's odds of applying, and non-traditional
 candidates get hit hardest.
 
-![Equity gap](03_equity_gap.png)
+![Equity gap](docs/figures/03_equity_gap.png)
 
 ## What I'd recommend
 
