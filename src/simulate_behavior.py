@@ -62,8 +62,19 @@ def simulate_apply_decision(match_df: pd.DataFrame, candidates: pd.DataFrame,
     """
     assignment: Series indexed by candidate_id, values in {"control","treatment"}
     Returns match_df with an added `applied` column (0/1).
+
+    Robustness: some match_df implementations already include a `background`
+    column on the pair-level. To avoid pandas suffixing (background_x/background_y)
+    and subsequent KeyErrors, only merge candidate metadata when the column is
+    absent. If both sources exist, prefer the pair-level value.
     """
-    df = match_df.merge(candidates[["candidate_id", "background"]], on="candidate_id")
+    # Work on a copy to avoid mutating the caller's dataframe
+    df = match_df.copy()
+
+    # If pair-level 'background' missing, merge it from candidates; otherwise keep existing
+    if "background" not in df.columns:
+        df = df.merge(candidates[["candidate_id", "background"]], on="candidate_id", how="left")
+
     df["arm"] = df["candidate_id"].map(assignment)
 
     apply_prob = np.where(
